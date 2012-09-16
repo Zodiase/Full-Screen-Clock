@@ -15,12 +15,14 @@ button,
 input,
 select,
 textarea {
-    color: #222;
+	color: #222;
 }
 
 body {
-    font-size: 1em;
-    line-height: 1.4;
+	font-size: 1em;
+	font-size: 50px;
+	line-height: 1.4;
+	opacity: 0;
 }
 
 /*
@@ -30,13 +32,13 @@ body {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 /*
@@ -44,12 +46,12 @@ body {
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
 }
 
 /*
@@ -57,7 +59,7 @@ hr {
  */
 
 img {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 /*
@@ -65,9 +67,9 @@ img {
  */
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /*
@@ -75,7 +77,7 @@ fieldset {
  */
 
 textarea {
-    resize: vertical;
+	resize: vertical;
 }
 
 /* ==========================================================================
@@ -83,21 +85,136 @@ textarea {
    ========================================================================== */
 
 .chromeframe {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
 }
 
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
-
-
-
-
+@font-face {
+	font-family: 'Special Elite';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Special Elite'), local('SpecialElite-Regular'), url(http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm4kaQb-UsZVONjobs91YQtw.woff) format('woff');
+}
+@font-face {
+	font-family: 'UnifrakturCook';
+	font-style: normal;
+	font-weight: 700;
+	src: local('UnifrakturCook'), local('UnifrakturCook-Bold'), url(http://themes.googleusercontent.com/static/fonts/unifrakturcook/v5/ASwh69ykD8iaoYijVEU6RgJcki-BsVeC4IjtMe0VI3I.woff) format('woff');
+}
+@font-face {
+	font-family: 'Luckiest Guy';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Luckiest Guy'), local('LuckiestGuy-Regular'), url(http://themes.googleusercontent.com/static/fonts/luckiestguy/v3/5718gH8nDy3hFVihOpkY5KRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+@font-face {
+	font-family: 'Fontdiner Swanky';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Fontdiner Swanky'), local('FontdinerSwanky'), url(http://themes.googleusercontent.com/static/fonts/fontdinerswanky/v3/8_GxIO5ixMtn5P6COsF3TmC-qdh9gY3gzw21ltIAGL8.woff) format('woff');
+}
+@font-face {
+	font-family: 'Black Ops One';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Black Ops One'), local('BlackOpsOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/blackopsone/v4/2XW-DmDsGbDLE372KrMW1YkaQb-UsZVONjobs91YQtw.woff) format('woff');
+}
+@font-face {
+	font-family: 'Caesar Dressing';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Caesar Dressing'), local('CaesarDressing-Regular'), url(http://themes.googleusercontent.com/static/fonts/caesardressing/v2/2T_WzBgE2Xz3FsyJMq34T7y37P2qBuXNAoKb6gHVWVo.woff) format('woff');
+}
+@font-face {
+	font-family: 'Cabin Sketch';
+	font-style: normal;
+	font-weight: 700;
+	src: local('CabinSketch Bold'), local('CabinSketch-Bold'), url(http://themes.googleusercontent.com/static/fonts/cabinsketch/v5/ki3SSN5HMOO0-IOLOj069BAPw1J91axKNXP_-QX9CC8.woff) format('woff');
+}
+@font-face {
+	font-family: 'Orbitron';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Orbitron-Bold'), url(http://themes.googleusercontent.com/static/fonts/orbitron/v3/Y82YH_MJJWnsH2yUA5AuYbrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+}
+@font-face {
+	font-family: 'Flavors';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Flavors'), local('Flavors-Regular'), url(http://themes.googleusercontent.com/static/fonts/flavors/v2/jSbrz06biEb05xhrWE3rmwLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+@font-face {
+	font-family: 'Droid Sans Mono';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Droid Sans Mono'), local('DroidSansMono'), url(http://themes.googleusercontent.com/static/fonts/droidsansmono/v4/ns-m2xQYezAtqh7ai59hJaH0X__W3S3MJL29bc5CWfs.woff) format('woff');
+}
+@font-face {
+	font-family: 'Fredericka the Great';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Fredericka the Great'), local('FrederickatheGreat'), url(http://themes.googleusercontent.com/static/fonts/frederickathegreat/v2/7Es8Lxoku-e5eOZWpxw18uNtPus5Q24fzFZQPskWbXv3rGVtsTkPsbDajuO5ueQw.woff) format('woff');
+}
+html {
+	background: #C9C9C9; /* Old browsers */
+}
+#wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 13em;
+	width: 100em;
+	margin-top: -7em;
+	margin-left: -50em;
+	text-align: center;
+	font-family: 'Orbitron';
+	text-shadow: 1px 1px 5px #333333;
+	filter: dropshadow(color=#333333, offx=1, offy=1);
+}
+#wrapper.h24 .h12 {
+	display: none;
+}
+#wrapper.h12 .h24 {
+	display: none;
+}
+#wrapper.nodate .date {
+	display: none;
+}
+#wrapper.noweekday #weekday {
+	display: none;
+}
+.time {
+	margin: 0;
+	font-size: 8em;
+	line-height: 100%;
+}
+.date {
+	margin: 0;
+	font-size: 5em;
+	line-height: 100%;
+}
+.time label {
+	display: inline-block;
+	margin: 0;
+}
+/* double digit */
+.dd {
+	width: 1.8em;
+	text-align: center;
+}
+/* single digit */
+.sd {
+	width: 0.4em;
+	text-align: center;
+}
+.date label {
+	margin-right: 0.5em;
+}
 
 
 
@@ -118,18 +235,18 @@ textarea {
  */
 
 .ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	/* IE 6/7 fallback */
+	*text-indent: -9999px;
 }
 
 .ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 100%;
+	content: "";
+	display: block;
+	width: 0;
+	height: 100%;
 }
 
 /*
@@ -137,8 +254,8 @@ textarea {
  */
 
 .hidden {
-    display: none !important;
-    visibility: hidden;
+	display: none !important;
+	visibility: hidden;
 }
 
 /*
@@ -146,14 +263,14 @@ textarea {
  */
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 /*
@@ -163,12 +280,12 @@ textarea {
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 /*
@@ -176,7 +293,7 @@ textarea {
  */
 
 .invisible {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 /*
@@ -184,21 +301,21 @@ textarea {
  *
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
+ *	  `contenteditable` attribute is included anywhere else in the document.
+ *	  Otherwise it causes space to appear at the top and bottom of elements
+ *	  that receive the `clearfix` class.
  * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
+ *	  `:before` to contain the top-margins of child elements.
  */
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+	content: " "; /* 1 */
+	display: table; /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+	clear: both;
 }
 
 /*
@@ -207,7 +324,7 @@ textarea {
  */
 
 .clearfix {
-    *zoom: 1;
+	*zoom: 1;
 }
 
 /* ==========================================================================
@@ -217,12 +334,12 @@ textarea {
    ========================================================================== */
 
 @media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+	/* Style adjustments for viewports that meet the condition */
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 144dpi) {
-    /* Style adjustments for high resolution devices */
+	   only screen and (min-resolution: 144dpi) {
+	/* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
@@ -231,68 +348,68 @@ textarea {
    ========================================================================== */
 
 @media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow:none !important;
-        text-shadow: none !important;
-    }
+	* {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		box-shadow:none !important;
+		text-shadow: none !important;
+	}
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
 
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
 
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
 
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
+	/*
+	 * Don't show links for images, or javascript/internal links
+	 */
 
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
+	.ir a:after,
+	a[href^="javascript:"]:after,
+	a[href^="#"]:after {
+		content: "";
+	}
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
 
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
+	thead {
+		display: table-header-group; /* h5bp.com/t */
+	}
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
 
-    img {
-        max-width: 100% !important;
-    }
+	img {
+		max-width: 100% !important;
+	}
 
-    @page {
-        margin: 0.5cm;
-    }
+	@page {
+		margin: 0.5cm;
+	}
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
 
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
 }
