@@ -27,13 +27,13 @@
 		<!-- hidden focus field for body -->
 		<input id="body_focusField" type="hidden">
 		<!-- clock wrapper -->
-		<div id="wrapper" class="h12">
+		<div id="wrapper" class="h12 noweekday hidden">
 			<p class="time"><label id="hour12" class="h12 dd">12</label><label id="hour24" class="h24 dd">24</label><label id="hour2minute" class="min sd">:</label><label id="minute" class="min dd">00</label><label id="minute2second" class="sec sd">:</label><label id="second" class="sec dd">00</label><label id="am" class="h12 dd">AM</label></p>
 			<p class="date">
 				<label id="weekday">Wednesday</label><label id="month">September</label><label id="day">31st</label><label id="year_seperator">,</label><label id="year">2055</label>
 			</p>
 		</div>
-		<div id="control" href="javascript:void(0);">
+		<div id="control" class="hidden">
 			<input id="control_focusField" type="hidden">
 			<img src="./img/control.png">
 			<ul class="settings">

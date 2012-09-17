@@ -1,7 +1,7 @@
 (function($){
 	var perfectWidth = 120, // em
 		perfectHeight = 60; // em
-	var minWidth = 800; // in px
+	var minWidth = 400; // in px
 	var refreshRate = 15; // frame per second
 	var updateTitle = true; // whether update window title or not
 	var resizeDelayTimer = null;
@@ -13,8 +13,10 @@
 		var width = $(window).width(),
 			height = $(window).height();
 		var currentRatio = width / height;
+		/*
 		if (width < minWidth) width = minWidth;
 		if (height < minWidth / perfectRatio) height = minWidth / perfectRatio;
+		*/
 		var fontSize = ((currentRatio < perfectRatio) ? width / perfectWidth : height / perfectHeight) + 'px';
 		if (fontSize !== $(document.body).css('fontSize'))
 			$(document.body).stop().animate({'fontSize': fontSize, 'opacity': 1}, duration, callback);
@@ -46,11 +48,11 @@
 		},
 		'weekday_on': function()
 		{
-			wrapper.addClass('noweekday', toggleTime);
+			wrapper.removeClass('noweekday', toggleTime);
 		},
 		'weekday_off': function()
 		{
-			wrapper.removeClass('noweekday', toggleTime);
+			wrapper.addClass('noweekday', toggleTime);
 		},
 		'date_on': function()
 		{
