@@ -209,7 +209,10 @@ body {
 	font-size: 4em;
 	line-height: 100%;
 }
-#wrapper .date label {
+#wrapper .date #weekday,
+#wrapper .date #month,
+#wrapper .date #day,
+#wrapper .date #year_seperator {
 	margin-right: 0.5em;
 }
 /* double digit */
@@ -356,6 +359,7 @@ body.debug #control ul.settings {
 }
 /* to-do list */
 #to_do {
+	display: inline-block;
 	font-size: 12px;
 	color: black;
 }
