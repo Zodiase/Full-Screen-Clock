@@ -161,71 +161,212 @@ textarea {
 	src: local('Fredericka the Great'), local('FrederickatheGreat'), url(http://themes.googleusercontent.com/static/fonts/frederickathegreat/v2/7Es8Lxoku-e5eOZWpxw18uNtPus5Q24fzFZQPskWbXv3rGVtsTkPsbDajuO5ueQw.woff) format('woff');
 }
 html {
-	background: #C9C9C9; /* Old browsers */
+	background: #C9C9C9;
+}
+body {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 #wrapper {
 	position: absolute;
+	z-index: 1;
 	top: 50%;
 	left: 50%;
-	height: 13em;
+	height: 16em;
 	width: 100em;
-	margin-top: -7em;
+	margin-top: -8em;
 	margin-left: -50em;
+	background-color: rgba(255, 255, 255, 0.3);
+	-webkit-box-shadow:  0 0 5em 6em rgba(255, 255, 255, 0.3);
+	box-shadow:  0 0 5em 6em rgba(255, 255, 255, 0.3);
 	text-align: center;
 	font-family: 'Orbitron';
-	text-shadow: 1px 1px 5px #333333;
+	color: black;
+	text-shadow: 0.1em 0.1em 0.5em black;
 	filter: dropshadow(color=#333333, offx=1, offy=1);
+}
+#wrapper label {
+	display: inline-block;
+}
+#wrapper .h12 {
+	display: inline-block;
+}
+#wrapper .h24 {
+	display: none;
+}
+#wrapper .time {
+	display: inline-block;
+	margin: 0;
+	font-size: 9em;
+	line-height: 100%;
+}
+#wrapper .date {
+	display: inline-block;
+	margin: 0;
+	font-size: 4em;
+	line-height: 100%;
+}
+#wrapper .date label {
+	margin-right: 0.5em;
+}
+/* double digit */
+#wrapper .dd {
+	width: 1.7em;
+	text-align: center;
+}
+/* single digit */
+#wrapper .sd {
+	width: 0.4em;
+	text-align: center;
+}
+/* 24hour mode */
+#wrapper.h24 {
+	height: 19em;
+	margin-top: -9.5em;
+}
+#wrapper.h24 .time {
+	font-size: 12em;
+	line-height: 100%;
 }
 #wrapper.h24 .h12 {
 	display: none;
 }
-#wrapper.h12 .h24 {
-	display: none;
+#wrapper.h24 .h24 {
+	display: inline-block;
 }
+/* no date mode */
 #wrapper.nodate .date {
 	display: none;
 }
+#wrapper.nodate .time {
+	font-size: 12em;
+	line-height: 1.4em;
+}
+/* 24hour no date mode */
+#wrapper.nodate.h24 .time {
+	font-size: 13em;
+}
+/* no week day mode */
 #wrapper.noweekday #weekday {
 	display: none;
 }
-.time {
-	margin: 0;
-	font-size: 8em;
-	line-height: 100%;
-}
-.date {
-	margin: 0;
+#wrapper.noweekday .date {
 	font-size: 5em;
+}
+/* control panel */
+#control {
+	display: block;
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	right: 0;
+	width: 7em;
+	height: 7em;
+	overflow: hidden;
+	border-radius: 0 0 0 3em;
+	background-color: white;
+	opacity: 0.3;
+	cursor: pointer;
+}
+#control img {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	width: 5em;
+	height: 5em;
+}
+#control ul.settings {
+	position: absolute;
+	bottom: 6em;
+	left: 4em;
+	height: 10em;
+	width: 16em;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	opacity: 0;
+}
+#control ul.settings li {
+	float: left;
+	clear: left;
+	width: 100%;
+	margin-top: 1em;
+}
+#control .setting_label {
+	float: left;
+	font-size: 1.7em;
 	line-height: 100%;
 }
-.time label {
+#control .checkSlide {
+	float: right;
+}
+
+#control:hover {
+	opacity: 1;
+	-webkit-box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
+	box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
+}
+#control.active {
+	opacity: 1;
+	width: 23em;
+	height: 17em;
+	-webkit-box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
+	box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
+	cursor: default;
+}
+#control.active ul.settings {
+	opacity: 1;
+}
+/* check slide class */
+.checkSlide {
 	display: inline-block;
+	position: relative;
+	height: 2em;
+	width: 4em;
+	overflow: hidden;
+	background-image: url('../img/switch_background.png');
+	background-size: 4em 2em;
+	background-repeat: no-repeat;
+}
+.checkSlide .toggler {
+	position: absolute;
+	top: 0;
+	left: 0;
 	margin: 0;
+	border: 0;
+	padding: 0;
+	height: 2em;
+	width: 2em;
+	background-color: transparent;
+	background-image: url('../img/switch_toggler.png');
+	background-size: 2em 2em;
+	background-repeat: no-repeat;
 }
-/* double digit */
-.dd {
-	width: 1.8em;
-	text-align: center;
+.checkSlide .toggler.on {
+	left: 2em;
 }
-/* single digit */
-.sd {
-	width: 0.4em;
-	text-align: center;
+/* debug */
+body.debug #wrapper .time,
+body.debug #wrapper .date,
+body.debug #control ul.settings {
+	border: 1px dotted red;
 }
-.date label {
-	margin-right: 0.5em;
+/* to-do list */
+#to_do {
+	font-size: 12px;
+	color: black;
 }
-
-
-
-
-
-
-
-
-
-
-
+#to_do .done {
+	text-decoration: line-through;
+	color: gray;
+}
+#to_do .done:hover {
+	text-decoration: none;
+	color: black;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

@@ -1,17 +1,14 @@
 (function($){
-	var perfectWidth = 150, // em
-		perfectHeight = 10; // em
+	var perfectWidth = 120, // em
+		perfectHeight = 60; // em
 	var minWidth = 800; // in px
 	var refreshRate = 15; // frame per second
 	var updateTitle = true; // whether update window title or not
 	var resizeDelayTimer = null;
-	$(window).resize(function ()
+	var toggleTime = 100;
+	function resizeEM(duration, callback)
 	{
-		if (resizeDelayTimer !== null) window.clearTimeout(resizeDelayTimer);
-		resizeDelayTimer = window.setTimeout(resizeEM, 300);
-	});
-	function resizeEM()
-	{
+		duration = (duration === 0) ? 0 : (Number(duration) || 300);
 		var perfectRatio = perfectWidth / perfectHeight;
 		var width = $(window).width(),
 			height = $(window).height();
@@ -20,11 +17,13 @@
 		if (height < minWidth / perfectRatio) height = minWidth / perfectRatio;
 		var fontSize = ((currentRatio < perfectRatio) ? width / perfectWidth : height / perfectHeight) + 'px';
 		if (fontSize !== $(document.body).css('fontSize'))
-			$(document.body).stop().animate({'fontSize': fontSize, 'opacity': 1}, 300);
+			$(document.body).stop().animate({'fontSize': fontSize, 'opacity': 1}, duration, callback);
 	}
-	resizeEM();
-
-	var wrapper = $('#wrapper');
+	var body = $(document.body);
+	var	wrapper = $('#wrapper', body),
+		control = $('#control', body);
+	var body_focusField = $('#body_focusField', body),
+		control_focusField = $('#control_focusField', control);
 	var clockField = {
 		hour12: $('#hour12', wrapper),
 		hour24: $('#hour24', wrapper),
@@ -35,6 +34,32 @@
 		month: $('#month', wrapper),
 		day: $('#day', wrapper),
 		year: $('#year', wrapper)
+	};
+	var api = {
+		'hour24_on': function()
+		{
+			wrapper.addClass('h24', toggleTime);
+		},
+		'hour24_off': function()
+		{
+			wrapper.removeClass('h24', toggleTime);
+		},
+		'weekday_on': function()
+		{
+			wrapper.addClass('noweekday', toggleTime);
+		},
+		'weekday_off': function()
+		{
+			wrapper.removeClass('noweekday', toggleTime);
+		},
+		'date_on': function()
+		{
+			wrapper.addClass('nodate', toggleTime);
+		},
+		'date_off': function()
+		{
+			wrapper.removeClass('nodate', toggleTime);
+		},
 	};
 	function refreshClock()
 	{
@@ -67,5 +92,73 @@
 		if (clockField.year.text() !== label_Y) clockField.year.text(label_Y);
 		if (updateTitle && document.title !== label_title) document.title = label_title;
 	}
-	window.setInterval(refreshClock, 1000 / refreshRate);
+	function hideClock()
+	{
+		wrapper.fadeOut(300);
+		wrapper.addClass('hidden');
+		wrapper.show();
+	}
+	function showClock()
+	{
+		wrapper.hide();
+		wrapper.removeClass('hidden');
+		wrapper.fadeIn(300);
+	}
+	function showControl()
+	{
+		control.hide();
+		control.removeClass('hidden');
+		control.fadeIn(300);
+	}
+	resizeEM(0, function()
+	{
+	//	return;
+		showClock();
+		showControl();
+		body_focusField.focus(function()
+		{
+			control.removeClass('active', 300);
+		});
+		body.click(function()
+		{
+			body_focusField.focus();
+			return false;
+		});
+		control_focusField.keydown(function()
+		{
+			return false;
+		});
+		control_focusField.focus(function()
+		{
+			control.addClass('active', 300);
+		});
+		control.click(function()
+		{
+			control_focusField.focus();
+			return false;
+		});
+		/* settings */
+		$('.checkSlide').click(function()
+		{
+			var jQObj = $('.toggler', this);
+			var target = String(jQObj.attr('for'));
+			if (jQObj.hasClass('on')) {
+				jQObj.removeClass('on', toggleTime);
+				var apiName = target + '_off';
+			} else {
+				jQObj.addClass('on', toggleTime);
+				var apiName = target + '_on';
+			}
+			if (typeof api[apiName] !== 'undefined') api[apiName].call();
+			return false;
+		});
+		/* auto resizing */
+		$(window).resize(function()
+		{
+			if (resizeDelayTimer !== null) window.clearTimeout(resizeDelayTimer);
+			resizeDelayTimer = window.setTimeout(resizeEM, 300);
+		});
+		/* start refreshing time */
+		window.setInterval(refreshClock, 1000 / refreshRate);
+	});
 })(jQuery);
