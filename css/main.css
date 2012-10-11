@@ -159,9 +159,6 @@ textarea {
 	font-weight: 400;
 	src: local('Fredericka the Great'), local('FrederickatheGreat'), url(http://themes.googleusercontent.com/static/fonts/frederickathegreat/v2/7Es8Lxoku-e5eOZWpxw18uNtPus5Q24fzFZQPskWbXv3rGVtsTkPsbDajuO5ueQw.woff) format('woff');
 }
-html {
-	background: #C9C9C9;
-}
 body {
 	position: absolute;
 	top: 0;
@@ -169,25 +166,21 @@ body {
 	bottom: 0;
 	left: 0;
 	overflow: hidden;
+	background-color: #FFFFFF;
 	font-size: 50px;
 }
 #wrapper {
 	position: absolute;
-	z-index: 1;
-	top: 50%;
-	left: 50%;
-	height: 16em;
-	width: 100em;
-	margin-top: -8em;
-	margin-left: -50em;
-	background-color: rgba(255, 255, 255, 0.3);
-	-webkit-box-shadow:  0 0 5em 6em rgba(255, 255, 255, 0.3);
-	box-shadow:  0 0 5em 6em rgba(255, 255, 255, 0.3);
-	text-align: center;
+	z-index: 1; top: 50%; left: 50%;
+	height: 14em; width: 100%;
+	margin: -8em auto auto -50%;
+	background-color: rgba(255, 255, 255, 0.1);
+	-webkit-box-shadow: 0 0 10em 5em rgba(255, 255, 255, 0.1) !important;
+	box-shadow: 0 0 10em 5em rgba(255, 255, 255, 0.1) !important;
+	text-align: center !important;
 	font-family: 'Orbitron';
-	color: black;
-	text-shadow: 0.1em 0.1em 0.5em black;
-	filter: dropshadow(color=#333333, offx=1, offy=1);
+	color: #000000;
+	text-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 1);
 }
 #wrapper label {
 	display: inline-block;
@@ -199,41 +192,43 @@ body {
 	display: none;
 }
 #wrapper .time {
-	display: inline-block;
-	margin: 0;
-	font-size: 9em;
-	line-height: 100%;
+	margin: 0.1em auto auto auto;
+	height: 1em;
+	font-size: 7em;
+	line-height: 1.2em;
+}
+#wrapper .time .am {
+	margin-left: 0.5em;
 }
 #wrapper .date {
-	display: inline-block;
 	margin: 0;
+	height: 1em;
 	font-size: 4em;
-	line-height: 100%;
+	line-height: 1.2em;
 }
-#wrapper .date #weekday,
-#wrapper .date #month,
-#wrapper .date #day,
-#wrapper .date #year_seperator {
+#wrapper .date .weekday,
+#wrapper .date .month,
+#wrapper .date .day,
+#wrapper .date .year_seperator {
 	margin-right: 0.5em;
 }
 /* double digit */
 #wrapper .dd {
-	width: 1.7em;
+	width: 1.8em;
 	text-align: center;
 }
 /* single digit */
 #wrapper .sd {
-	width: 0.4em;
+	width: 0.9em;
 	text-align: center;
 }
 /* 24hour mode */
 #wrapper.h24 {
-	height: 19em;
-	margin-top: -9.5em;
+	height: 17em;
+	margin-top: -8.5em;
 }
 #wrapper.h24 .time {
-	font-size: 12em;
-	line-height: 100%;
+	font-size: 10em;
 }
 #wrapper.h24 .h12 {
 	display: none;
@@ -246,19 +241,27 @@ body {
 	display: none;
 }
 #wrapper.nodate .time {
-	font-size: 12em;
-	line-height: 1.4em;
+	margin-top: 0.2em;
+	font-size: 10em;
 }
 /* 24hour no date mode */
 #wrapper.nodate.h24 .time {
-	font-size: 13em;
+	font-size: 12em;
 }
 /* no week day mode */
-#wrapper.noweekday #weekday {
+#wrapper.noweekday .weekday {
 	display: none;
 }
 #wrapper.noweekday .date {
 	font-size: 5em;
+}
+/* stop IE from doing shitty shadows */
+html.lt-ie10 #wrapper {
+	background-color: transparent !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+	filter: none !important;
 }
 /* control panel */
 #control {
@@ -270,6 +273,9 @@ body {
 	width: 7em;
 	height: 7em;
 	overflow: hidden;
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: black;
 	border-radius: 0 0 0 3em;
 	background-color: white;
 	opacity: 0.3;
@@ -283,11 +289,7 @@ body {
 	height: 5em;
 }
 #control ul.settings {
-	position: absolute;
-	bottom: 6em;
-	left: 4em;
-	height: 10em;
-	width: 16em;
+	width: 17em;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -296,15 +298,18 @@ body {
 #control ul.settings li {
 	float: left;
 	clear: left;
+	height: 1em;
 	width: 100%;
-	margin-top: 1em;
+	margin-bottom: 1.5em;
 }
 #control .setting_label {
 	float: left;
 	font-size: 1.7em;
 	line-height: 100%;
+	font-family: sans-serif;
 }
-#control .checkSlide {
+#control .checkSlide,
+#control .colorPicker {
 	float: right;
 }
 
@@ -315,14 +320,18 @@ body {
 }
 #control.active {
 	opacity: 1;
-	width: 23em;
-	height: 17em;
+	height: auto;
+	width: auto;
+	padding: 3em 3em 6em 5em;
 	-webkit-box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
 	box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
 	cursor: default;
 }
 #control.active ul.settings {
 	opacity: 1;
+}
+#control.hiding .settings {
+	visibility: hidden;
 }
 /* check slide class */
 .checkSlide {
@@ -352,7 +361,29 @@ body {
 .checkSlide .toggler.on {
 	left: 2em;
 }
+/* color picker (text field) */
+.colorPicker {
+	display: inline-block;
+	position: relative;
+	height: 2em;
+	width: 5.6em;
+	overflow: hidden;
+}
+.colorPicker input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	border: 0;
+	border-bottom: 1px solid black;
+	padding: 0;
+	font-size: 1.5em;
+	font-family: monospace;
+}
 /* debug */
+body.debug #wrapper,
 body.debug #wrapper .time,
 body.debug #wrapper .date,
 body.debug #control ul.settings {
@@ -377,7 +408,7 @@ body.debug #control ul.settings {
 	position: absolute;
 	bottom: 1em;
 	left: 1em;
-	font-size: 12px;
+	font-size: 8px;
 }
 /* ==========================================================================
    Helper classes
