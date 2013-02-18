@@ -97,67 +97,70 @@ textarea {
 	font-family: 'Special Elite';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Special Elite'), local('SpecialElite-Regular'), url(http://themes.googleusercontent.com/static/fonts/specialelite/v3/9-wW4zu3WNoD5Fjka35Jm4kaQb-UsZVONjobs91YQtw.woff) format('woff');
+	src: local('Special Elite'), local('SpecialElite-Regular'), url(../img/SpecialElite-Regular.woff) format('woff');
 }
 @font-face {
 	font-family: 'UnifrakturCook';
 	font-style: normal;
 	font-weight: 700;
-	src: local('UnifrakturCook'), local('UnifrakturCook-Bold'), url(http://themes.googleusercontent.com/static/fonts/unifrakturcook/v5/ASwh69ykD8iaoYijVEU6RgJcki-BsVeC4IjtMe0VI3I.woff) format('woff');
+	src: local('UnifrakturCook'), local('UnifrakturCook-Bold'), url(../img/UnifrakturCook-Bold.woff) format('woff');
 }
 @font-face {
 	font-family: 'Luckiest Guy';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Luckiest Guy'), local('LuckiestGuy-Regular'), url(http://themes.googleusercontent.com/static/fonts/luckiestguy/v3/5718gH8nDy3hFVihOpkY5KRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+	src: local('Luckiest Guy'), local('LuckiestGuy-Regular'), url(../img/LuckiestGuy-Regular.woff) format('woff');
 }
 @font-face {
 	font-family: 'Fontdiner Swanky';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Fontdiner Swanky'), local('FontdinerSwanky'), url(http://themes.googleusercontent.com/static/fonts/fontdinerswanky/v3/8_GxIO5ixMtn5P6COsF3TmC-qdh9gY3gzw21ltIAGL8.woff) format('woff');
+	src: local('Fontdiner Swanky'), local('FontdinerSwanky'), url(../img/FontdinerSwanky.woff) format('woff');
 }
 @font-face {
 	font-family: 'Black Ops One';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Black Ops One'), local('BlackOpsOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/blackopsone/v4/2XW-DmDsGbDLE372KrMW1YkaQb-UsZVONjobs91YQtw.woff) format('woff');
+	src: local('Black Ops One'), local('BlackOpsOne-Regular'), url(../img/BlackOpsOne-Regular.woff) format('woff');
 }
 @font-face {
 	font-family: 'Caesar Dressing';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Caesar Dressing'), local('CaesarDressing-Regular'), url(http://themes.googleusercontent.com/static/fonts/caesardressing/v2/2T_WzBgE2Xz3FsyJMq34T7y37P2qBuXNAoKb6gHVWVo.woff) format('woff');
+	src: local('Caesar Dressing'), local('CaesarDressing-Regular'), url(../img/CaesarDressing-Regular.woff) format('woff');
 }
 @font-face {
 	font-family: 'Cabin Sketch';
 	font-style: normal;
 	font-weight: 700;
-	src: local('CabinSketch Bold'), local('CabinSketch-Bold'), url(http://themes.googleusercontent.com/static/fonts/cabinsketch/v5/ki3SSN5HMOO0-IOLOj069BAPw1J91axKNXP_-QX9CC8.woff) format('woff');
+	src: local('CabinSketch Bold'), local('CabinSketch-Bold'), url(../img/CabinSketch-Bold.woff) format('woff');
 }
 @font-face {
 	font-family: 'Orbitron';
 	font-style: normal;
 	font-weight: 700;
-	src: local('Orbitron-Bold'), url(http://themes.googleusercontent.com/static/fonts/orbitron/v3/Y82YH_MJJWnsH2yUA5AuYbrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+	src: local('Orbitron-Bold'), url(../img/Orbitron-Bold.woff) format('woff');
 }
 @font-face {
 	font-family: 'Flavors';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Flavors'), local('Flavors-Regular'), url(http://themes.googleusercontent.com/static/fonts/flavors/v2/jSbrz06biEb05xhrWE3rmwLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+	src: local('Flavors'), local('Flavors-Regular'), url(../img/Flavors-Regular.woff) format('woff');
 }
 @font-face {
 	font-family: 'Droid Sans Mono';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Droid Sans Mono'), local('DroidSansMono'), url(http://themes.googleusercontent.com/static/fonts/droidsansmono/v4/ns-m2xQYezAtqh7ai59hJaH0X__W3S3MJL29bc5CWfs.woff) format('woff');
+	src: local('Droid Sans Mono'), local('DroidSansMono'), url(../img/DroidSansMono.woff) format('woff');
 }
 @font-face {
 	font-family: 'Fredericka the Great';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Fredericka the Great'), local('FrederickatheGreat'), url(http://themes.googleusercontent.com/static/fonts/frederickathegreat/v2/7Es8Lxoku-e5eOZWpxw18uNtPus5Q24fzFZQPskWbXv3rGVtsTkPsbDajuO5ueQw.woff) format('woff');
+	src: local('Fredericka the Great'), local('FrederickatheGreat'), url(../img/FrederickatheGreat.woff) format('woff');
+}
+html {
+	background-color: gray;
 }
 body {
 	position: absolute;
@@ -165,174 +168,252 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	border: 0;
 	overflow: hidden;
 	background-color: #FFFFFF;
 	font-size: 50px;
 }
-#wrapper {
-	position: absolute;
-	z-index: 1; top: 50%; left: 50%;
-	height: 14em; width: 100%;
-	margin: -8em auto auto -50%;
-	background-color: rgba(255, 255, 255, 0.1);
-	-webkit-box-shadow: 0 0 10em 5em rgba(255, 255, 255, 0.1) !important;
-	box-shadow: 0 0 10em 5em rgba(255, 255, 255, 0.1) !important;
-	text-align: center !important;
-	font-family: 'Orbitron';
-	color: #000000;
-	text-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 1);
-}
-#wrapper label {
-	display: inline-block;
-}
-#wrapper .h12 {
-	display: inline-block;
-}
-#wrapper .h24 {
-	display: none;
-}
-#wrapper .time {
-	margin: 0.1em auto auto auto;
-	height: 1em;
-	font-size: 7em;
-	line-height: 1.2em;
-}
-#wrapper .time .am {
-	margin-left: 0.5em;
-}
-#wrapper .date {
-	margin: 0;
-	height: 1em;
-	font-size: 4em;
-	line-height: 1.2em;
-}
-#wrapper .date .weekday,
-#wrapper .date .month,
-#wrapper .date .day,
-#wrapper .date .year_seperator {
-	margin-right: 0.5em;
-}
-/* double digit */
-#wrapper .dd {
-	width: 1.8em;
-	text-align: center;
-}
-/* single digit */
-#wrapper .sd {
-	width: 0.9em;
-	text-align: center;
-}
-/* 24hour mode */
-#wrapper.h24 {
-	height: 17em;
-	margin-top: -8.5em;
-}
-#wrapper.h24 .time {
-	font-size: 10em;
-}
-#wrapper.h24 .h12 {
-	display: none;
-}
-#wrapper.h24 .h24 {
-	display: inline-block;
-}
-/* no date mode */
-#wrapper.nodate .date {
-	display: none;
-}
-#wrapper.nodate .time {
-	margin-top: 0.2em;
-	font-size: 10em;
-}
-/* 24hour no date mode */
-#wrapper.nodate.h24 .time {
-	font-size: 12em;
-}
-/* no week day mode */
-#wrapper.noweekday .weekday {
-	display: none;
-}
-#wrapper.noweekday .date {
-	font-size: 5em;
-}
+body
+	.fsc_wrapper {
+		position: absolute;
+		z-index: 1; top: 50%; left: 0; right: 0;
+		height: 14em;
+		margin: -8em auto auto auto;
+		background-color: rgba(255, 255, 255, 0.1);
+		-webkit-box-shadow: 0 0 10em 5em rgba(255, 255, 255, 0.1) !important;
+		box-shadow: 0 0 10em 5em rgba(255, 255, 255, 0.1) !important;
+		text-align: center !important;
+		font-family: 'Orbitron';
+		color: #000000;
+		text-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 1);
+	}
+body
+	.fsc_wrapper
+		label {
+			display: inline-block;
+		}
+body
+	.fsc_wrapper
+		.h12 {
+			display: inline-block;
+		}
+body
+	.fsc_wrapper
+		.h24 {
+			display: none;
+		}
+body
+	.fsc_wrapper
+		.time {
+			margin: 0.1em auto auto auto;
+			height: 1em;
+			font-size: 7em;
+			line-height: 1.2em;
+		}
+body
+	.fsc_wrapper
+		.time
+			.am {
+				margin-left: 0.5em;
+			}
+body
+	.fsc_wrapper
+		.date {
+			margin: 0;
+			height: 1em;
+			font-size: 4em;
+			line-height: 1.2em;
+		}
+body
+	.fsc_wrapper
+		.date
+			.weekday,
+body
+	.fsc_wrapper
+		.date
+			.month,
+body
+	.fsc_wrapper
+		.date
+			.day,
+body
+	.fsc_wrapper
+		.date
+			.year_seperator {
+				margin-right: 0.5em;
+			}
+	/* double digit */
+body
+	.fsc_wrapper
+		.dd {
+			width: 1.8em;
+			text-align: center;
+		}
+	/* single digit */
+body
+	.fsc_wrapper
+		.sd {
+			width: 0.9em;
+			text-align: center;
+		}
+	/* 24hour mode */
+body
+	.fsc_wrapper.h24 {
+		height: 17em;
+		margin-top: -8.5em;
+	}
+body
+	.fsc_wrapper.h24
+		.time {
+			font-size: 10em;
+		}
+body
+	.fsc_wrapper.h24
+		.h12 {
+			display: none;
+		}
+body
+	.fsc_wrapper.h24
+		.h24 {
+			display: inline-block;
+		}
+	/* no date mode */
+body
+	.fsc_wrapper.nodate
+		.date {
+			display: none;
+		}
+body
+	.fsc_wrapper.nodate
+		.time {
+			margin-top: 0.2em;
+			font-size: 10em;
+		}
+	/* 24hour no date mode */
+body
+	.fsc_wrapper.nodate.h24
+		.time {
+			font-size: 12em;
+		}
+	/* no week day mode */
+body
+	.fsc_wrapper.noweekday
+		.weekday {
+			display: none;
+		}
+body
+	.fsc_wrapper.noweekday
+		.date {
+			font-size: 5em;
+		}
 /* stop IE from doing shitty shadows */
-html.lt-ie10 #wrapper {
-	background-color: transparent !important;
-	-webkit-box-shadow: none !important;
-	box-shadow: none !important;
-	text-shadow: none !important;
-	filter: none !important;
-}
+html.lt-ie10
+	.fsc_wrapper {
+		background-color: transparent !important;
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+		filter: none !important;
+	}
 /* control panel */
-#control {
-	display: block;
-	position: absolute;
-	z-index: 2;
-	top: 0;
-	right: 0;
-	width: 7em;
-	height: 7em;
-	overflow: hidden;
-	border-width: 0 0 1px 1px;
-	border-style: solid;
-	border-color: black;
-	border-radius: 0 0 0 3em;
-	background-color: white;
-	opacity: 0.3;
-	cursor: pointer;
-}
-#control img {
-	position: absolute;
-	bottom: 1em;
-	left: 1em;
-	width: 5em;
-	height: 5em;
-}
-#control ul.settings {
-	width: 17em;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	opacity: 0;
-}
-#control ul.settings li {
-	float: left;
-	clear: left;
-	height: 1em;
-	width: 100%;
-	margin-bottom: 1.5em;
-}
-#control .setting_label {
-	float: left;
-	font-size: 1.7em;
-	line-height: 100%;
-	font-family: sans-serif;
-}
-#control .checkSlide,
-#control .colorPicker {
-	float: right;
-}
-
-#control:hover {
-	opacity: 1;
-	-webkit-box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
-	box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
-}
-#control.active {
-	opacity: 1;
-	height: auto;
-	width: auto;
-	padding: 3em 3em 6em 5em;
-	-webkit-box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
-	box-shadow: 0 0 2em 0em rgba(255, 255, 255, 0.3);
-	cursor: default;
-}
-#control.active ul.settings {
-	opacity: 1;
-}
-#control.hiding .settings {
-	visibility: hidden;
-}
+body
+	.modeSwitch {
+		position: absolute;
+		top: 1em;
+		right: 3em;
+		font-size: 12px;
+	}
+body
+	.modeSwitch
+		a {
+			display: inline-block;
+			padding: 0.2em 0.3em;
+			font-size: 18px;
+			color: inherit;
+			text-decoration: none;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+		}
+body
+	.modeSwitch
+		a.active {
+			border-bottom: 1px solid;
+		}
+body
+	.settingsPanel {
+		position: absolute;
+		z-index: 3;
+		top: 0;
+		right: auto;
+		bottom: 0;
+		left: 100%;
+		width: 20em;
+		overflow-y: auto;
+		overflow-x: hidden;
+		margin: 0;
+		border-left: 1px solid black;
+		border-left: 1px solid rgba(0, 0, 0);
+		padding: 1em 4em;
+		background-color: white;
+		background-color: rgba(255, 255, 255);
+		list-style: none;
+		font-size: 12px;
+		opacity: 0;
+	}
+body
+	.settingsPanel.expanded {
+		z-index: 4;
+		margin-left: -28em;
+		opacity: 1;
+	}
+body
+	.settingsPanel
+		li {
+			float: left;
+			clear: left;
+			width: 100%;
+			margin-bottom: 1.2em;
+		}
+body
+	.settingsPanel
+		li
+			.setting_label {
+				float: left;
+				font-size: 1.7em;
+				line-height: 100%;
+				font-family: sans-serif;
+			}
+body
+	.settingsPanel
+		li.sub
+			.setting_label {
+				float: left;
+				padding-left: 1em;
+				font-size: 1em;
+				line-height: 100%;
+				font-family: sans-serif;
+			}
+body
+	.settingsPanel
+		li
+			.checkSlide,
+body
+	.settingsPanel
+		li
+			.colorPicker,
+body
+	.settingsPanel
+		li
+			.slider {
+				float: right;
+			}
+body
+	.settingsPanel
+		li
+			.settingDone {
+				display: block;
+				width: 50%;
+				margin: 2em auto;
+			}
 /* check slide class */
 .checkSlide {
 	display: inline-block;
@@ -361,33 +442,19 @@ html.lt-ie10 #wrapper {
 .checkSlide .toggler.on {
 	left: 2em;
 }
-/* color picker (text field) */
-.colorPicker {
+/* color slider */
+.slider {
 	display: inline-block;
-	position: relative;
-	height: 2em;
-	width: 5.6em;
-	overflow: hidden;
+	width: 70%;
 }
-.colorPicker input {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	overflow: hidden;
-	border: 0;
-	border-bottom: 1px solid black;
-	padding: 0;
-	font-size: 1.5em;
-	font-family: monospace;
+.slider[channel="r"] {
+	background: #EE3333;
 }
-/* debug */
-body.debug #wrapper,
-body.debug #wrapper .time,
-body.debug #wrapper .date,
-body.debug #control ul.settings {
-	border: 1px dotted red;
+.slider[channel="g"] {
+	background: #33EE33;
+}
+.slider[channel="b"] {
+	background: #3333EE;
 }
 /* to-do list */
 #to_do {

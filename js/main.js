@@ -27,6 +27,7 @@ maxCount=countDown;};}
 "use strict";
 	var mainQueue = PQUEUE([
 		function initialize(q) {
+			/* initialize and/or load cfg values */
 			q.heap.cfgs = {
 				perfectWidth     : 120,  // em
 				perfectHeight    : 60,   // em
@@ -35,12 +36,18 @@ maxCount=countDown;};}
 				updateTitle      : true, // whether update window title or not
 				resizeDelayTimer : null,
 				toggleTime       : 100,
-				foreColor        : localStorage.getItem('foreColor') || '000000',
-				backColor        : localStorage.getItem('rearColor') || 'FFFFFF',
+				foreColorRed     : (localStorage.getItem('foreColorRed') !== null) ? parseInt(localStorage.getItem('foreColorRed'), 10) : 0,
+				foreColorGreen   : (localStorage.getItem('foreColorGreen') !== null) ? parseInt(localStorage.getItem('foreColorGreen'), 10) : 0,
+				foreColorBlue    : (localStorage.getItem('foreColorBlue') !== null) ? parseInt(localStorage.getItem('foreColorBlue'), 10) : 0,
+				backColorRed     : (localStorage.getItem('backColorRed') !== null)  ? parseInt(localStorage.getItem('backColorRed'), 10) : 255,
+				backColorGreen   : (localStorage.getItem('backColorGreen') !== null)  ? parseInt(localStorage.getItem('backColorGreen'), 10) : 255,
+				backColorBlue    : (localStorage.getItem('backColorBlue') !== null)  ? parseInt(localStorage.getItem('backColorBlue'), 10) : 255,
 				hourmode         : localStorage.getItem('hour24') || 'off',
 				weekdaymode      : localStorage.getItem('weekday') || 'off',
-				datemode         : localStorage.getItem('date') || 'off'
+				datemode         : localStorage.getItem('date') || 'off',
+				appMode          : localStorage.getItem('mode') || 'clock'
 			};
+			/* helper functions */
 			q.heap.hlps = {
 				resizeEM : function (duration, callback) {
 					duration = (duration === 0) ? 0 : (Number(duration) || 300);
@@ -94,8 +101,33 @@ maxCount=countDown;};}
 					if (q.heap.clockField['D'].text() !== label_d) q.heap.clockField['D'].text(label_d);
 					if (q.heap.clockField['Y'].text() !== label_Y) q.heap.clockField['Y'].text(label_Y);
 					if (q.heap.cfgs['updateTitle'] && document.title !== label_title) document.title = label_title;
+				},
+				updateBackgroundColor : function (duration, callback)
+				{
+					if (typeof duration !== 'number') duration = 300;
+					var channelR = q.heap.cfgs['backColorRed'],
+						channelG = q.heap.cfgs['backColorGreen'],
+						channelB = q.heap.cfgs['backColorBlue'];
+					var backgroundColorString = 'rgb(' + channelR + ', ' + channelG + ', ' + channelB + ')';
+					var borderColorChannelR = 255 - channelR,
+						borderColorChannelG = 255 - channelG,
+						borderColorChannelB = 255 - channelB;
+					var borderColorString = 'rgb(' + borderColorChannelR + ', ' + borderColorChannelG + ', ' + borderColorChannelB + ')';
+					q.heap.body.animate({'backgroundColor': backgroundColorString}, duration, callback);
+					q.heap.control.animate({'border-color': borderColorString}, duration);
+				},
+				updateForeColor : function (duration, callback)
+				{
+					if (typeof duration !== 'number') duration = 300;
+					var channelR = q.heap.cfgs['foreColorRed'],
+						channelG = q.heap.cfgs['foreColorGreen'],
+						channelB = q.heap.cfgs['foreColorBlue'];
+					var colorString = 'rgb(' + channelR + ', ' + channelG + ', ' + channelB + ')';
+					q.heap.wrapper.animate({'color': colorString}, duration, callback);
+					q.heap.navigator.animate({'color': colorString}, duration);
 				}
 			};
+			/* application interfaces */
 			q.heap.apis = {
 				'hour24_on': function(callback) {
 					q.heap.wrapper.addClass('h24', q.heap.cfgs['toggleTime']);
@@ -134,71 +166,83 @@ maxCount=countDown;};}
 					jQObj.removeClass('on', q.heap.cfgs['toggleTime'], callback);
 					localStorage.setItem('date', 'off');
 				},
-				'body_bgc': function(colorValue, callback)
+				'bgc_r': function(colorValue, duration, callback)
 				{
-					var match = String(colorValue).match(/^[#]{0,1}([0-9a-f]{3}|[0-9a-f]{6})$/im);
-					if (!match) return;
-					var hexString = match[1];
-					var parseArray = hexString.split('');
-				//	if (parseArray[0] === '#') parseArray.pop();
-					if (parseArray.length === 3) {
-						parseArray[5] = parseArray[4] = parseArray[2];
-						parseArray[3] = parseArray[2] = parseArray[1];
-						parseArray[1] = parseArray[0];
-					}
-					var channelR = Number('0x' + String(parseArray[0]) + String(parseArray[1])),
-						channelG = Number('0x' + parseArray[2] + parseArray[3]),
-						channelB = Number('0x' + parseArray[4] + parseArray[5]);
-					var backgroundColorString = 'rgb(' + channelR + ', ' + channelG + ', ' + channelB + ')';
-					var borderColorChannelR = 255 - channelR,
-						borderColorChannelG = 255 - channelG,
-						borderColorChannelB = 255 - channelB;
-					var borderColorString = 'rgb(' + borderColorChannelR + ', ' + borderColorChannelG + ', ' + borderColorChannelB + ')';
-					q.heap.body.animate({'backgroundColor': backgroundColorString}, 300, callback);
-					q.heap.control.animate({'border-color': borderColorString}, 300);
-					
-					localStorage.setItem('rearColor', hexString);
-					var inputField = $('.bgcField[for="body"]');
-					if (inputField.val() !== colorValue) inputField.val(colorValue);
+					if (typeof colorValue !== 'number') return;
+					colorValue = parseInt(colorValue, 10);
+					if (colorValue < 0 || colorValue > 255) return;
+					q.heap.cfgs['backColorRed'] = colorValue;
+					localStorage.setItem('backColorRed', colorValue);
+					var slider = $('.slider[for="bgc"][channel="r"]');
+					if (slider.slider('value') != colorValue) slider.slider('value', colorValue);
+					q.heap.hlps.updateBackgroundColor(duration, callback);
 				},
-				'wrapper_color': function(colorValue, callback)
+				'bgc_g': function(colorValue, duration, callback)
 				{
-					var match = String(colorValue).match(/^[#]{0,1}([0-9a-f]{3}|[0-9a-f]{6})$/im);
-					if (!match) return;
-					var hexString = match[1];
-					var parseArray = hexString.split('');
-					if (parseArray.length === 3) {
-						parseArray[5] = parseArray[4] = parseArray[2];
-						parseArray[3] = parseArray[2] = parseArray[1];
-						parseArray[1] = parseArray[0];
-					}
-					var channelR = Number('0x' + String(parseArray[0]) + String(parseArray[1])),
-						channelG = Number('0x' + parseArray[2] + parseArray[3]),
-						channelB = Number('0x' + parseArray[4] + parseArray[5]);
-					var colorString = 'rgb(' + channelR + ', ' + channelG + ', ' + channelB + ')';
-					q.heap.wrapper.animate({'color': colorString}, 300, callback);
-					
-					localStorage.setItem('foreColor', hexString);
-					var inputField = $('.colorField[for="wrapper"]');
-					if (inputField.val() !== colorValue) inputField.val(colorValue);
+					if (typeof colorValue !== 'number') return;
+					colorValue = parseInt(colorValue, 10);
+					if (colorValue < 0 || colorValue > 255) return;
+					q.heap.cfgs['backColorGreen'] = colorValue;
+					localStorage.setItem('backColorGreen', colorValue);
+					var slider = $('.slider[for="bgc"][channel="g"]');
+					if (slider.slider('value') != colorValue) slider.slider('value', colorValue);
+					q.heap.hlps.updateBackgroundColor(duration, callback);
+				},
+				'bgc_b': function(colorValue, duration, callback)
+				{
+					if (typeof colorValue !== 'number') return;
+					colorValue = parseInt(colorValue, 10);
+					if (colorValue < 0 || colorValue > 255) return;
+					q.heap.cfgs['backColorBlue'] = colorValue;
+					localStorage.setItem('backColorBlue', colorValue);
+					var slider = $('.slider[for="bgc"][channel="b"]');
+					if (slider.slider('value') != colorValue) slider.slider('value', colorValue);
+					q.heap.hlps.updateBackgroundColor(duration, callback);
+				},
+				'fec_r': function(colorValue, duration, callback)
+				{
+					if (typeof colorValue !== 'number') return;
+					colorValue = parseInt(colorValue, 10);
+					if (colorValue < 0 || colorValue > 255) return;
+					q.heap.cfgs['foreColorRed'] = colorValue;
+					localStorage.setItem('foreColorRed', colorValue);
+					var slider = $('.slider[for="fec"][channel="r"]');
+					if (slider.slider('value') != colorValue) slider.slider('value', colorValue);
+					q.heap.hlps.updateForeColor(duration, callback);
+				},
+				'fec_g': function(colorValue, duration, callback)
+				{
+					if (typeof colorValue !== 'number') return;
+					colorValue = parseInt(colorValue, 10);
+					if (colorValue < 0 || colorValue > 255) return;
+					q.heap.cfgs['foreColorGreen'] = colorValue;
+					localStorage.setItem('foreColorGreen', colorValue);
+					var slider = $('.slider[for="fec"][channel="g"]');
+					if (slider.slider('value') != colorValue) slider.slider('value', colorValue);
+					q.heap.hlps.updateForeColor(duration, callback);
+				},
+				'fec_b': function(colorValue, duration, callback)
+				{
+					if (typeof colorValue !== 'number') return;
+					colorValue = parseInt(colorValue, 10);
+					if (colorValue < 0 || colorValue > 255) return;
+					q.heap.cfgs['foreColorBlue'] = colorValue;
+					localStorage.setItem('foreColorBlue', colorValue);
+					var slider = $('.slider[for="fec"][channel="b"]');
+					if (slider.slider('value') != colorValue) slider.slider('value', colorValue);
+					q.heap.hlps.updateForeColor(duration, callback);
+				},
+				'nav_settings': function()
+				{
+					q.heap.control.toggleClass('expanded', q.heap.cfgs['toggleTime']);
 				}
 			};
 		},
 		function prepareDocument(q) {
 			q.heap.body = $(document.body);
-			q.heap.wrapper = $('#wrapper.fsc_wrapper', q.heap.body),
-			q.heap.control = $('#control', q.heap.body);
-			q.heap.body_focusField = $('#body_focusField', q.heap.body),
-			q.heap.control_focusField = $('#control_focusField', q.heap.control);
-/*
-create the following struct
-<div id="wrapper" class="fsc_wrapper h12 noweekday hidden">
-<p class="time"><label id="hour12" class="h12 dd">12</label><label id="hour24" class="h24 dd">24</label><label id="hour2minute" class="min sd">:</label><label id="minute" class="min dd">00</label><label id="minute2second" class="sec sd">:</label><label id="second" class="sec dd">00</label><label id="am" class="h12 dd">AM</label></p>
-<p class="date">
-	<label id="weekday">Wednesday</label><label id="month">September</label><label id="day">31st</label><label id="year_seperator">,</label><label id="year">2055</label>
-</p>
-</div>
-*/
+			q.heap.wrapper = $('.fsc_wrapper', q.heap.body),
+			q.heap.navigator = $('.modeSwitch', q.heap.body),
+			q.heap.control = $('.settingsPanel', q.heap.body);
 			q.heap.clockField = {
 				h12_0: $('<label class="h12 sd">'),
 				h12_1: $('<label class="h12 sd">'),
@@ -244,29 +288,12 @@ create the following struct
 				q.heap.clockField['Y']
 			).appendTo(q.heap.wrapper);
 			
-			/* pre-set properties */
-			$('input.bgcField').each(function() {
-				$(this).attr('maxlength', 6);
-			});
-			$('input.colorField').each(function() {
-				$(this).attr('maxlength', 6);
-			});
-			/* focusField support */
-			q.heap.body_focusField.focus(function() {
-				q.heap.control.addClass('hiding').removeClass('active', 300);
-			});
-			q.heap.body.click(function() {
-				q.heap.body_focusField.focus();
-				return false;
-			});
-			q.heap.control_focusField.keydown(function() {
-				return false;
-			});
-			q.heap.control_focusField.focus(function() {
-				q.heap.control.removeClass('hiding').addClass('active', 300);
-			});
-			q.heap.control.click(function() {
-				q.heap.control_focusField.focus();
+			/* navigation buttons */
+			$('.nav').click(function() {
+				var jQObj = $(this);
+				var target = String(jQObj.attr('for'));
+				var apiName = 'nav_' + target;
+				if (typeof q.heap.apis[apiName] !== 'undefined') q.heap.apis[apiName].call(jQObj);
 				return false;
 			});
 			/* settings */
@@ -281,24 +308,22 @@ create the following struct
 			$('.checkSlide .toggler').focus(function() {
 				$(this).blur();
 			});
-			/* color fields */
-			$('input.bgcField').change(function() {
-				var jQObj = $(this);
-				var target = String(jQObj.attr('for'));
-				var apiName = target + '_bgc';
-				if (typeof q.heap.apis[apiName] !== 'undefined') q.heap.apis[apiName].call(jQObj, jQObj.val());
-				return false;
+			/* initialize sliders */
+			$('.slider').slider({
+				animate: false,
+				max: 255,
+				min: 0,
+				orientation: 'horizontal',
+				value: 128,
+				change: function (e, ui) {
+					var jQObj = $(this);
+					var apiName = String(jQObj.attr('for')) + '_' + String(jQObj.attr('channel'));
+					if (typeof q.heap.apis[apiName] !== 'undefined') q.heap.apis[apiName].call(jQObj, ui.value, q.heap.cfgs['toggleTime']);
+				}
 			});
-			$('input.colorField').change(function() {
-				var jQObj = $(this);
-				var target = String(jQObj.attr('for'));
-				var apiName = target + '_color';
-				if (typeof q.heap.apis[apiName] !== 'undefined') q.heap.apis[apiName].call(jQObj, jQObj.val());
-				return false;
-			});
-			/* assistive input.change feature */
-			$('input[type="text"]').keyup(function(e) {
-				$(this).change();
+			/* setting done button */
+			$('.settingDone').button().click(function() {
+				q.heap.control.toggleClass('expanded', q.heap.cfgs['toggleTime']);
 			});
 		},
 		function loadSettings(q) {
@@ -307,14 +332,20 @@ create the following struct
 				'hour24',
 				'weekday',
 				'date',
-				'bodyBGC',
-				'wrapperColor'
+			//	'bodyBGC_R',
+			//	'bodyBGC_G',
+			//	'bodyBGC_B',
+			//	'wrapperColor'
 			], q.walk);
 			q.heap.apis['hour24_' + q.heap.cfgs['hourmode']](race_loadSettings.set['hour24']);
 			q.heap.apis['weekday_' + q.heap.cfgs['weekdaymode']](race_loadSettings.set['weekday']);
 			q.heap.apis['date_' + q.heap.cfgs['datemode']](race_loadSettings.set['date']);
-			q.heap.apis['body_bgc'](q.heap.cfgs['backColor'], race_loadSettings.set['bodyBGC']);
-			q.heap.apis['wrapper_color'](q.heap.cfgs['foreColor'], race_loadSettings.set['wrapperColor']);
+			q.heap.apis['bgc_r'](q.heap.cfgs['backColorRed'], 0);
+			q.heap.apis['bgc_g'](q.heap.cfgs['backColorGreen'], 0);
+			q.heap.apis['bgc_b'](q.heap.cfgs['backColorBlue'], 0);
+			q.heap.apis['fec_r'](q.heap.cfgs['foreColorRed'], 0);
+			q.heap.apis['fec_g'](q.heap.cfgs['foreColorGreen'], 0);
+			q.heap.apis['fec_b'](q.heap.cfgs['foreColorBlue'], 0);
 		},
 		function startGlobalClock(q) {
 			/* start refreshing time */
@@ -336,10 +367,6 @@ create the following struct
 			q.heap.wrapper.hide();
 			q.heap.wrapper.removeClass('hidden');
 			q.heap.wrapper.fadeIn(300, q.walk);
-		},
-		function showControl(q) {
-			q.wait();
-			q.heap.control.hide().removeClass('hidden').fadeIn(300, q.walk);
 		},
 		PQUEUE_HALT
 	], 0).tick();
