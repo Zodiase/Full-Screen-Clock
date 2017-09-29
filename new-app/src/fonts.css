@@ -1,0 +1,66 @@
+@font-face {
+	font-family: 'Special Elite';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Special Elite'), local('SpecialElite-Regular'), url(fonts/SpecialElite-Regular.woff) format('woff');
+}
+@font-face {
+	font-family: 'UnifrakturCook';
+	font-style: normal;
+	font-weight: 700;
+	src: local('UnifrakturCook'), local('UnifrakturCook-Bold'), url(fonts/UnifrakturCook-Bold.woff) format('woff');
+}
+@font-face {
+	font-family: 'Luckiest Guy';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Luckiest Guy'), local('LuckiestGuy-Regular'), url(fonts/LuckiestGuy-Regular.woff) format('woff');
+}
+@font-face {
+	font-family: 'Fontdiner Swanky';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Fontdiner Swanky'), local('FontdinerSwanky'), url(fonts/FontdinerSwanky.woff) format('woff');
+}
+@font-face {
+	font-family: 'Black Ops One';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Black Ops One'), local('BlackOpsOne-Regular'), url(fonts/BlackOpsOne-Regular.woff) format('woff');
+}
+@font-face {
+	font-family: 'Caesar Dressing';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Caesar Dressing'), local('CaesarDressing-Regular'), url(fonts/CaesarDressing-Regular.woff) format('woff');
+}
+@font-face {
+	font-family: 'Cabin Sketch';
+	font-style: normal;
+	font-weight: 700;
+	src: local('CabinSketch Bold'), local('CabinSketch-Bold'), url(fonts/CabinSketch-Bold.woff) format('woff');
+}
+@font-face {
+	font-family: 'Orbitron';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Orbitron-Bold'), url(fonts/Orbitron-Bold.woff) format('woff');
+}
+@font-face {
+	font-family: 'Flavors';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Flavors'), local('Flavors-Regular'), url(fonts/Flavors-Regular.woff) format('woff');
+}
+@font-face {
+	font-family: 'Droid Sans Mono';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Droid Sans Mono'), local('DroidSansMono'), url(fonts/DroidSansMono.woff) format('woff');
+}
+@font-face {
+	font-family: 'Fredericka the Great';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Fredericka the Great'), local('FrederickatheGreat'), url(fonts/FrederickatheGreat.woff) format('woff');
+}

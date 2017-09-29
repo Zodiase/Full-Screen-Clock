@@ -1,0 +1,5 @@
+.DateView {}
+
+.DateView:not(.DateView--showDayOfWeek) .DateView__dayOfWeek {
+  display: none;
+}

@@ -1,0 +1,19 @@
+.TimeView {}
+
+.TimeView:not(.TimeView--hour12) .TimeView__hour12,
+.TimeView:not(.TimeView--hour12) .TimeView__am,
+.TimeView.TimeView--hour12 .TimeView__hour24 {
+  display: none;
+}
+
+.TimeView__singleDigit {
+	display: inline-block;
+  width: 0.9em;
+  text-align: center;
+}
+
+.TimeView__doubleDigit {
+	display: inline-block;
+  width: 1.8em;
+  text-align: center;
+}

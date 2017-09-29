@@ -1,0 +1,6 @@
+.Clock {
+  display: inline-block;
+  font-family: 'Orbitron';
+  font-size: 50px;
+	text-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 1);
+}
